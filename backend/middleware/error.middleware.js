@@ -2,10 +2,13 @@ import { ApiError } from "../utils/ApiError.js";
 
 
 export const notFound = (req, res, next) => {
-    next(newApiError(404, `Route not found: ${req.method} ${req,originalUrl}`));
-
+  next(
+    new ApiError(
+      404,
+      `Route not found: ${req.method} ${req.originalUrl}`
+    )
+  );
 };
-
 // eslint-disable-next-line no-unused-vars
 export const errorHandler = (err, req, res, next) => {
   let statusCode = err.statusCode || 500;
